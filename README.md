@@ -4,6 +4,14 @@ StaticMapMaker
 A PNG map maker for OpenStreetMap and similar tile servers.
 
 
+Tile usage
+==========
+
+To make maps, this PHP program downloads map tiles from an external server.  The default server is the Mapnik server run by OpenStreetMap, and others are run by other groups.  Generally speaking, these groups discourage heavy use of tile downloading.  If you plan on running this program on occasion or for individual use, I imagine they won't mind the occasional traffic.  However, if you plan to use it a lot, you might want to ask permission from whoever is running the tile servers you use.
+
+* OpenStreetMap: <http://wiki.openstreetmap.org/wiki/Tile_usage_policy>
+* OpenCycleMap: <http://thunderforest.com/terms/>
+
 History
 =======
 
