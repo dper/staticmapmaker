@@ -1,4 +1,4 @@
-<?
+<?php
 
 function imagemap_xy2ll($x, $y, $Data)
 {
@@ -8,14 +8,14 @@ function imagemap_xy2ll($x, $y, $Data)
   $W = $Data['w'];
   $H = $Data['h'];
 
-  // Centre of the screen in mercator units
+  // Centre of the screen in Mercator units
   list($CX, $CY) = latlon2xy($CLat,$CLon,$Z);
 
   // Click's offset in pixels from centre of screen
   $PX = $x - 0.5 * $W;
   $PY = $y - 0.5 * $H;
 
-  // Click's position in mercator units
+  // Click's position in Mercator units
   $X2 = $CX + $PX / 256.0;
   $Y2 = $CY + $PY / 256.0;
   
@@ -25,7 +25,6 @@ function imagemap_xy2ll($x, $y, $Data)
   return(array($Lat,$Lon));
 }
 
-
 function imagemap_ll2xy($Lat, $Lon, $Data)
 {
   $CLat = $Data['lat'];
@@ -34,10 +33,10 @@ function imagemap_ll2xy($Lat, $Lon, $Data)
   $W = $Data['w'];
   $H = $Data['h'];
 
-  // Centre of the screen in mercator units
+  // Centre of the screen in Mercator units
   list($CX, $CY) = latlon2xy($CLat,$CLon,$Z);
 
-  // Position in mercator units
+  // Position in Mercator units
   list($X2, $Y2) = latlon2xy($Lat,$Lon,$Z);
 
   // Position's offset in pixels from centre of image
@@ -50,6 +49,5 @@ function imagemap_ll2xy($Lat, $Lon, $Data)
 
   return(array($x,$y));
 }
-
 
 ?>
