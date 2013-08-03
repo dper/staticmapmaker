@@ -75,32 +75,5 @@ function getLayers()
       }
     }
 
-  # OpenAerialMap - project no longer running, waiting for replacement source
-  # of freely-licensed satellite/aerial images
-  if(0)
-    $Layers["aerial photos"] = Array(
-      "tiles" => "http://oam1.hypercube.telascience.org/tiles/1.0.0/openaerialmap-900913/",
-      "description"=>"Aerial photographs",
-      "update"=>"As new data becomes available",
-      "license"=>"PD",
-      "source"=>"OpenAerialMap",
-      "format"=>"jpeg",
-      "hosted" =>"telascience",
-      "slippy"=>"http://openaerialmap.org/"
-      );
-  
-  # TODO: detect if lat/lon is in slovakia before offering this one?
-  if(0)
-    $Layers["slovakia"] = Array(
-      "tiles" =>"http://www.freemap.sk/layers/allinone/?/",
-      "description"=>"Slovakian localisation of OSM",
-      "update"=>"",
-      "license"=>"CC-BY-SA 2.0",
-      "source"=>"OpenStreetMap",
-      "hosted"=>"OpenStreetMap Slovakia",
-      "format"=>"png",
-      "slippy"=>"http://www.freemap.sk/"
-      );
-
   return($Layers);
 }
