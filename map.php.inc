@@ -1,7 +1,7 @@
 <?php
 
 #----------------------------------------------------------------------------
-# Create a map, output it to browser
+# Create a map and output it to the browser.
 #----------------------------------------------------------------------------
 function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribution, $Data)
 {

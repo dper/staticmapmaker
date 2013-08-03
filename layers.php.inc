@@ -56,24 +56,24 @@ function getLayers()
       )
     );
 
-  # optionally include cloudmade tiles
-  # requires api key and probably some sort of usage agreement
-  if(1) 
-    {
-    foreach(array(1,2,999,5, 998) as $CloudmadeStyleNum)
-      {
-      $Layers[sprintf("cloudmade_%d", $CloudmadeStyleNum)] = Array(
-	"tiles" => sprintf("http://tile.cloudmade.com/8460df1eb000505e92f1e907e4b426e6/%d/256/", $CloudmadeStyleNum),
-	"description"=>sprintf("Style %d on Cloudmade's style-editor", $CloudmadeStyleNum),
-	"update"=>"As new data becomes available",
-	"license"=>"CC-BY-SA 2.0",
-	"source"=>"CloudMade",
-	"format"=>"png",
-	"hosted" =>"cloudmade",
-	"slippy"=>"http://maps.cloudmade.com/"
-	);
-      }
-    }
+	# Optionally include Cloudmade tiles.
+	# This requires an API key and probably some sort of usage agreement.
+	if(1) 
+	{
+		foreach(array(1,2,999,5, 998) as $CloudmadeStyleNum)
+		{
+			$Layers[sprintf("cloudmade_%d", $CloudmadeStyleNum)] = Array(
+			"tiles" => sprintf("http://tile.cloudmade.com/8460df1eb000505e92f1e907e4b426e6/%d/256/", $CloudmadeStyleNum),
+			"description"=>sprintf("Style %d on Cloudmade's style-editor", $CloudmadeStyleNum),
+			"update"=>"As new data becomes available",
+			"license"=>"CC-BY-SA 2.0",
+			"source"=>"CloudMade",
+			"format"=>"png",
+			"hosted" =>"cloudmade",
+			"slippy"=>"http://maps.cloudmade.com/"
+			);
+		}
+	}
 
-  return($Layers);
+	return($Layers);
 }

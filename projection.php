@@ -1,7 +1,7 @@
 <?php
 #-------------------------------------------------------
 # Translates between lat/long and the slippy-map tile
-# numbering scheme
+# numbering scheme.
 # 
 # http://wiki.openstreetmap.org/index.php/Slippy_map_tilenames
 # 
