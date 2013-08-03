@@ -1,5 +1,4 @@
 <?
-include("projection.php");
 
 function imagemap_xy2ll($x, $y, $Data)
 {

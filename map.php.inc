@@ -1,6 +1,4 @@
 <?php
-include_once("layers.php.inc");
-include_once("limits.php.inc");
 
 #----------------------------------------------------------------------------
 # Create a map, output it to browser

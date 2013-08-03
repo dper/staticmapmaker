@@ -1,7 +1,9 @@
 <?php
-include_once("map.php.inc");
+include_once("projection.php");
 include_once("imagemap_projection.php");
+include_once("map.php.inc");
 include_once("limits.php.inc");
+include_once("layers.php.inc");
 
 # Standard fields
 $Fields = array(
