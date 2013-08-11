@@ -84,7 +84,7 @@ $Fields = array(
   "zoom_to_clicks"=>array(
       'name'=>"Zoom to mouse position when recentering map", 
       'type'=>'option', 
-      'options'=> array('on', 'off')),
+      'options'=> array('off', 'on')),
   "att"=>array(
       'name'=>"Attribution", 
       'type'=>'option',  
@@ -348,13 +348,11 @@ switch($Data['mode'])
     printf("</p>");
 
     ShowImage(true);
-    printf("<p>Click map to recenter (zooming to mouse click: %s)</p>", OptionList("zoom_to_clicks"));
     break;
     }
   case 'Resize':
     {
-    printf("<p><a href='%s'><img src='gfx/screen_sizes.png' ismap/></a></p>", LinkSelf());
-
+    printf("<p>\n");
     printf("<form action='.' method='get'>");
     printf("<input type='text' name='w' value='%u' size='4' /> &times; \n", $Data['w']);
     printf("<input type='text' name='h' value='%u' size='4' />\n", $Data['h']);
