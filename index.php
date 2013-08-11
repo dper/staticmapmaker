@@ -64,7 +64,6 @@ $Fields = array(
 	  'Draw', 
 	  'Overlays',
 	  'Export', 
-	  'Report error', 
 	  'API')),
   "gpx"=>array(
       'name'=>"GPX trace", 
@@ -537,24 +536,6 @@ switch($Data['mode'])
     printf("<h2>Image URL</h2><p>(paste this anywhere that you have to enter an image URL)</p>");
     printf("<form><textarea rows='7' cols='80'>%s</textarea></form>", htmlentities(FullImageURL()));
     printf("<p>(right-clicking on the image above and selecting <i>'copy image location'</i> should also give you the same URL)</p>");
-
-    break;
-    }
-  case 'Report error':
-    {
-    $URL = sprintf("http://openstreetbugs.appspot.com/?lat=%f&lon=%f&z=14", $Data['lat'], $Data['lon']);
-    printf("<h2>Report an error with the map data</h2>");
-    printf("<p>This will report a map error to <a href='%s/'>OpenStreetBugs</a></p>",$URL);
-    printf("<form method='post' action='http://openstreetbugs.appspot.com/addPOIexec'>\n");
-    printf("<input name='lon' value='%f' type='hidden'>", $Data['lon']);
-    printf("<input name='lat' value='%f' type='hidden'>", $Data['lat']);
-    $HintText = 
-      "Describe the error you can see on this map:\n\n\n\n\n\n" .
-      "What's the source of your information?\n[ ] Local knowledge\n[ ] Other: _____________\n";
-    printf("<textarea name='text' rows='10' cols='80'>%s</textarea><br>\n", $HintText);
-    printf("<input value='Report map error' type='submit' style='padding:1em; font-weight:bold' /></form>");
-
-    printf("<p>&nbsp;</p>\n<p>After sending this report, your message will be visible to other mappers, and to the general public.");
 
     break;
     }
