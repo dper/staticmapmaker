@@ -551,16 +551,17 @@ function T($EnglishText)
   $Lang = $Data["lang"];
   return($EnglishText);
 }
-function title()
-{
-  return("Create a map");
+
+function title() {
+	return("Create a map");
 }
-function footer()
-{
-  $OsmLicense = "http://creativecommons.org/licenses/by-sa/2.0/";
-  $URL = "openstreetmap.org";
-  return("<hr><p>Map data <a href='$OsmLicense'>CC-BY-SA 2.0</a>. Main site: <a href=http://'$URL'>$URL</a><br><span class='help_footer'>Use your browser's <i>back</i> button to undo mistakes.  Bookmark the page to save your map.</span></p>");
+
+function footer() {
+	$OsmLicense = "http://creativecommons.org/licenses/by-sa/2.0/";
+	$URL = "openstreetmap.org";
+	return("<hr><p>Map data <a href='$OsmLicense'>CC-BY-SA 2.0</a>. Main site: <a href=http://'$URL'>$URL</a>.<br><span class='help_footer'>Use your browser's <i>back</i> button to undo mistakes.  Bookmark the page to save your map.</span></p>");
 }
+
 function LinkSelf($Changes = array(), $Base = "./")
 {
   global $Data;
@@ -584,10 +585,6 @@ function LinkSelf($Changes = array(), $Base = "./")
 function imageUrl($Changes = array(), $Base="./")
 {
   return(LinkSelf($Changes, $Base) . "show=1");
-}
-function FullImageUrl()
-{
-  return(imageUrl(array(), "http://" . $_SERVER["HTTP_HOST"] . "/~ojw/StaticMap/"));
 }
 function HiddenFields($Omit = array())
 {
