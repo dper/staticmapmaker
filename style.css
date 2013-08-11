@@ -1,5 +1,11 @@
 body {
-  background-color: #FFC;
+	background-color: #FFC;
+	text-align: center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .everything {
