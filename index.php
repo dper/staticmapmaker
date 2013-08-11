@@ -293,7 +293,7 @@ if($_REQUEST['show'])
 }
 
 printf("<html><head><title>%s</title>\n", T(title()));
-printf("<link rel='stylesheet' href='styles.php?look=default'/>");
+printf("<link rel='stylesheet' href='style.css' />");
 printf("</head>\n");
 
 printf("<p style='float:right'><a href='./'>Restart</a></p>");
