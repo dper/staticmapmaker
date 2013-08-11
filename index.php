@@ -90,8 +90,8 @@ $Fields = array(
       'name'=>"Attribution", 
       'type'=>'option',  
       'options'=>array(
-	  'text', 
 	  'logo', 
+	  'text', 
 	  'none'))
   );
 
