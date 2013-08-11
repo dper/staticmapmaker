@@ -530,26 +530,25 @@ printf("<div class='footer'>%s</div>\n</body>\n</html>\n", footer());
 
 function markerInUse($i)
 {
-  global $Data;
-  return($Data["mlat$i"] != 0 && $Data["mlon$i"] != 0);
+	global $Data;
+	return($Data["mlat$i"] != 0 && $Data["mlon$i"] != 0);
 }
 
-function ShowImage($IsMap = false)
-{
-  global $Data;
-  printf("<p>%s<img src='%s' width='%d' height='%d' %s/>%s</p>\n",
-    $IsMap?"<a href='".LinkSelf()."'>":"",
-    imageUrl(),
-    $Data['w'], 
-    $Data['h'],
-    $IsMap?"ismap":"",
-    $IsMap?"</a>":"");
+function ShowImage($IsMap = false) {
+	global $Data;
+	printf("<p>%s<img src='%s' width='%d' height='%d' %s/>%s</p>\n",
+	$IsMap?"<a href='".LinkSelf()."'>":"",
+		imageUrl(),
+		$Data['w'], 
+		$Data['h'],
+		$IsMap?"ismap":"",
+		$IsMap?"</a>":"");
 }
-function T($EnglishText)
-{
-  global $Data;
-  $Lang = $Data["lang"];
-  return($EnglishText);
+
+function T($EnglishText) {
+	global $Data;
+	$Lang = $Data["lang"];
+	return($EnglishText);
 }
 
 function title() {
@@ -562,8 +561,7 @@ function footer() {
 	return("<hr><p>Map data <a href='$OsmLicense'>CC-BY-SA 2.0</a>. Main site: <a href=http://'$URL'>$URL</a>.<br><span class='help_footer'>Use your browser's <i>back</i> button to undo mistakes.  Bookmark the page to save your map.</span></p>");
 }
 
-function LinkSelf($Changes = array(), $Base = "./")
-{
+function LinkSelf($Changes = array(), $Base = "./") {
   global $Data;
   global $Fields;
   $NewData = $Data;
@@ -582,12 +580,11 @@ function LinkSelf($Changes = array(), $Base = "./")
 
   return($Base . "?" . $Query);
 }
-function imageUrl($Changes = array(), $Base="./")
-{
-  return(LinkSelf($Changes, $Base) . "show=1");
+function imageUrl($Changes = array(), $Base="./") {
+	return(LinkSelf($Changes, $Base) . "show=1");
 }
-function HiddenFields($Omit = array())
-{
+
+function HiddenFields($Omit = array()) {
   global $Data;
   global $Fields;
   foreach($Fields as $Field => $Details)
@@ -605,10 +602,8 @@ function HiddenFields($Omit = array())
   return("./?" . $Query);
 }
 
-function ReadFields($Req)
-{
+function ReadFields($Req) {
   global $Fields;
-  # Interpret our standard fields
   $Data = array();
   foreach($Fields as $Field => $Details)
   {
@@ -638,8 +633,7 @@ function ReadFields($Req)
   return($Data);
 }
 
-function FieldDefault($Field)
-{
+function FieldDefault($Field) {
   global $Fields;
   if(array_key_exists('default', $Fields[$Field]))
     return($Fields[$Field]['default']);
@@ -655,8 +649,7 @@ function FieldDefault($Field)
   return(0);
 }
 
-function OptionList($Field)
-{
+function OptionList($Field) {
   global $Fields;
   global $Data;
   $Html = "";
@@ -670,8 +663,7 @@ function OptionList($Field)
   return($Html);
 }
 
-function ColourChooser($Field)
-{
+function ColourChooser($Field) {
   $Html = "<div class='colour_chooser'><table border='0'><tr><td>";
   global $Data;
   $Stops = array(0,4,8,12,15);
@@ -694,8 +686,7 @@ function ColourChooser($Field)
   return($Html);
 }
 
-function iconSelector($OutputSymbol)
-{
+function iconSelector($OutputSymbol) {
   $SymbolDir = "symbols";
   printf("<p>Choose an image for %s<br/>\n", htmlentities($OutputSymbol));
   if($fp = opendir($SymbolDir))
@@ -720,9 +711,9 @@ function iconSelector($OutputSymbol)
     }
   printf("</p>");
 }
-function iconName($IconID)
-{
-  return(sprintf("symbols/%d.png", $IconID));
+
+function iconName($IconID) {
+	return(sprintf("symbols/%d.png", $IconID));
 }
 
 ?>
