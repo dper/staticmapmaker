@@ -64,9 +64,7 @@ $Fields = array(
 	  'Draw', 
 	  'Overlays',
 	  'Export', 
-	  'Community', 
 	  'Report error', 
-	  #'Debug',
 	  'API')),
   "gpx"=>array(
       'name'=>"GPX trace", 
@@ -542,25 +540,6 @@ switch($Data['mode'])
 
     break;
     }
-  case 'Community':
-    {
-    printf("<h2>Share this map</h2>\n");
-    printf("<p><a href='http://delicious.com/search?p=osm_static_maps'>Browse other people's maps</a></p>");
-
-    printf("<p><a href='http://delicious.com/save?url=%s'>Share this map on Del.icio.us</a> (account required) and give it a tag of <i>osm_static_maps</i></p>", 
-      htmlentities(urlencode(FullImageURL())));
-
-    printf("<p>Use this map to <a href='%s'>illustrate a wikipedia article</a> <i>(link goes to wikiproject page, not an upload form)</i></p>",
-      'http://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps');
-
-    printf("<p>Make a <a href='http://tinyurl.com/create.php?url=%s'>TinyURL</a></p>",
-      htmlentities(urlencode(FullImageURL())));
-
-    printf("<h2>Edit the maps</h2>\n<p>Get involved with <a href='%s'>editing OpenStreetmap</a></p>\n", 
-      "http://wiki.openstreetmap.org/wiki/Beginners%27_Guide");
-
-    break;
-    }
   case 'Report error':
     {
     $URL = sprintf("http://openstreetbugs.appspot.com/?lat=%f&lon=%f&z=14", $Data['lat'], $Data['lon']);
@@ -583,7 +562,6 @@ switch($Data['mode'])
     {
     printf("<h2>API for accessing these maps</h2>\n");
     printf("<p>All aspects of this site are available through HTTP GET requests.  The fields are described below:</p>");
-    ##printf("<p><i>Many of these fields are generated</i></p>");
     printf("<p>Some of these fields are for navigating the website, and would not typically be used when requesting an image (e.g. show_icon_list or zoom_to_clicks)</p>");
     printf("<p>Be sure to include show=1 to get the image instead of this website!</p>");
 
