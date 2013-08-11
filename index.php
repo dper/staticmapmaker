@@ -63,7 +63,6 @@ $Fields = array(
 	  'Add icon', 
 	  'Draw', 
 	  'Overlays',
-	  'Export', 
 	  'API')),
   "gpx"=>array(
       'name'=>"GPX trace", 
@@ -506,36 +505,6 @@ switch($Data['mode'])
 
     printf("<h2>Attribution</h2>\n<p>%s</p>\n", OptionList('att'));
     print("<p class='note'>If you select none, then attribution should be provided elsewhere, e.g. in the website or document which includes the image</p>\n");
-
-    break;
-    }
-  case 'Export':
-    {
-    printf("<p><a href='http://tinyurl.com/create.php?url=%s'>Make a TinyURL</a> to your map</p>",
-      htmlentities(urlencode(FullImageURL())));
-
-    ShowImage();
-    printf("<p>Right-click the image and &quot;save as&quot; to get an image that you can use in any document</p>"); // TODO: different instructions depending on user-agent?
-
-
-    printf("<h2>HTML code</h2><p>(paste this to your website)</p>");
-
-    $AltText = sprintf("OpenStreetMap (%s) map of the area around %1.5f, %1.5f",
-      $Data['layer'],
-      $Data['lat'],
-      $Data['lon']);
-
-    $Html = sprintf("<img src=\"%s\" width=\"%d\" height=\"%d\" alt=\"%s\" />", 
-      FullImageURL(),
-      $Data['w'],
-      $Data['h'],
-      $AltText);
-
-    printf("<form><textarea rows='10' cols='80'>%s</textarea></form>", htmlentities($Html));
-
-    printf("<h2>Image URL</h2><p>(paste this anywhere that you have to enter an image URL)</p>");
-    printf("<form><textarea rows='7' cols='80'>%s</textarea></form>", htmlentities(FullImageURL()));
-    printf("<p>(right-clicking on the image above and selecting <i>'copy image location'</i> should also give you the same URL)</p>");
 
     break;
     }
