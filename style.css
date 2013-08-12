@@ -28,7 +28,6 @@ table {
 .main {
   background-color: white;
   border: 1px solid black;
-  padding: 0.5em;
 }
 
 #selected_style {
@@ -42,8 +41,8 @@ table {
   padding:0.1em;
 }
 
-.help_footer {
-  color:#888;
+.footer {
+  font-size: smaller;
 }
 
 .colour, .selected_colour {
