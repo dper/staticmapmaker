@@ -4,7 +4,7 @@ function getLayers() {
 	$Layers = Array(
 		"Mapnik" => Array(
 			"tiles"=>"http://tile.openstreetmap.org/",
-			"description"=>"Roadmap rendering of OSM",
+			"description"=>"Roadmap rendering from OpenStreetMap.",
 			"update"=>"Weekly",
 			"license"=>"CC-BY-SA 2.0",
 			"source"=>"OpenStreetMap",
@@ -13,15 +13,45 @@ function getLayers() {
 			"slippy"=>"http://openstreetmap.org/"
 		),
 			"OpenCycleMap" => Array(
-			"tiles" => "http://a.andy.sandbox.cloudmade.com/tiles/cycle",
-			"description"=>"Cycle routes and the national cycling network (NCN)",
+			"tiles" => "http://tile.opencyclemap.org/cycle",
+			"description"=>"A bicycle-themed map.",
 			"update"=>"",
 			"license"=>"CC-BY-SA 2.0",
 			"source"=>"OpenStreetMap",
 			"hosted"=>"thunderflames.org",
 			"format"=>"png",
-			"slippy"=>"http://www.gravitystorm.co.uk/osm/"
+			"slippy"=>"http://www.opencyclemap.org/"
 		),
+		"Transport" => Array(
+			"tiles" => "http://tile2.opencyclemap.org/transport",
+			"description"=>"Public transport information.",
+			"update"=>"",
+			"license"=>"CC-BY-SA 2.0",
+			"source"=>"OpenStreetMap",
+			"hosted"=>"thunderforest.com",
+			"format"=>"png",
+			"slippy"=>"http://www.opencyclemap.org/"
+		),
+		"Outdoors" => Array(
+			"tiles" => "http://tile.opencyclemap.org/outdoors",
+			"description"=>"Aimed at the outdoors enthusiasts.",
+			"update"=>"",
+			"license"=>"CC-BY-SA 2.0",
+			"source"=>"OpenStreetMap",
+			"hosted"=>"thunderforest.com",
+			"format"=>"png",
+			"slippy"=>"http://www.opencyclemap.org/"
+		), 
+		"Landscape" => Array(
+			"tiles" => "http://tile3.opencyclemap.org/landscape",
+			"description"=>"The world is full of interesting features beyond roads and houses.",
+			"update"=>"",
+			"license"=>"CC-BY-SA 2.0",
+			"source"=>"OpenStreetMap",
+			"hosted"=>"thunderforest.com",
+			"format"=>"png",
+			"slippy"=>"http://www.opencyclemap.org/"
+		), 
 	);
 
 	# Optionally include Cloudmade tiles.
