@@ -6,13 +6,12 @@ A PNG map maker for OpenStreetMap and similar tile servers.
 Why
 ===
 
-This program is useful for people who want to make static maps.  However, you can take screenshots from OpenStreetMap easily enough.  What this program lets you do is specify the precise size and location of your map, then add a few icons and lines, and then create the map image.  If you save the URL, you can update the map in the future by reloading the page.  Also, this program supports several different tile sources.  Each tile server renders the map in a different way, and it's easy to compare and choose your favorite using this.  Anyone can run this program, so even if one map making server goes down, you can easily recreate the map later on another server by changing the base part of the URL.
-
+This program is useful for people who want to make static maps.  You can take screenshots from OpenStreetMap easily enough, and if that's all you need, don't bother with this.  What this program lets you do is specify the precise size and location of your map, then add a few icons and lines, and then create the map image.  If you save the URL, you can update the map in the future by reloading the page.  Also, this program supports several different tile sources.  Each tile server renders the map in a different way, and it's easy to compare and choose your favorite using this.  Anyone can run this program, so even if one map making server goes down, you can easily recreate the map later on another server by changing the base part of the URL.
 
 Tile usage
 ==========
 
-To make maps, this PHP program downloads map tiles from an external server.  The default server is the Mapnik server run by OpenStreetMap, and others are run by other groups.  Generally speaking, these groups discourage heavy use of tile downloading.  If you plan on running this program on occasion or for individual use, I imagine they won't mind the occasional traffic.  However, if you plan to use it a lot, you might want to ask permission from whoever is running the tile servers you use.
+To make maps, this PHP program downloads map tiles from an external server.  The default server is the Mapnik server run by OpenStreetMap, and others are run by other groups.  Generally speaking, these groups discourage heavy use of tile downloading.  If you plan on running this program on occasion or for individual use, I imagine they won't mind a small amount of traffic.  However, if you plan to use it a lot, you might want to ask permission from whoever is running the tile servers you use.  Or, if you're highly motivated and have a powerful server to play with, you could run our own tile server.
 
 * OpenStreetMap: <http://wiki.openstreetmap.org/wiki/Tile_usage_policy>
 * OpenCycleMap: <http://thunderforest.com/terms/>
