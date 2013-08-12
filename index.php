@@ -294,7 +294,7 @@ printf("</head>\n");
 printf("<p style='float:right'><a href='./'>Restart</a></p>");
 printf("<h1>%s</h1>\n", T(title()));
 
-printf("<div class='everything'>\n");
+printf("<div>\n");
 printf("<div class='tabs'>\n");
 foreach($Fields['mode']['options'] as $Mode)
 {
@@ -442,7 +442,7 @@ switch($Data['mode'])
   case 'Draw':
     {
     ShowImage(true);
-    printf("<p>Click image to add point %d to drawing %d</p><hr/>\n", $Data["dp_num"], $Data["d_num"]);
+    printf("<p>Click image to add point %d to drawing %d</p>\n", $Data["dp_num"], $Data["d_num"]);
     
     for($i = 0; $i < $MaxDrawings; $i++)
       {
@@ -558,7 +558,7 @@ function title() {
 function footer() {
 	$OsmLicense = "http://creativecommons.org/licenses/by-sa/2.0/";
 	$URL = "openstreetmap.org";
-	return("<hr><p>Map data <a href='$OsmLicense'>CC-BY-SA 2.0</a>. Main site: <a href=http://'$URL'>$URL</a>.<br><span class='help_footer'>Use your browser's <i>back</i> button to undo mistakes.  Bookmark the page to save your map.</span></p>");
+	return("<p>Map data <a href='$OsmLicense'>CC-BY-SA 2.0</a>. Main site: <a href=http://'$URL'>$URL</a>.<br><span class='help_footer'>Use your browser's <i>back</i> button to undo mistakes.  Bookmark the page to save your map.</span></p>");
 }
 
 function LinkSelf($Changes = array(), $Base = "./") {
@@ -687,29 +687,27 @@ function ColourChooser($Field) {
 }
 
 function iconSelector($OutputSymbol) {
-  $SymbolDir = "symbols";
-  printf("<p>Choose an image for %s<br/>\n", htmlentities($OutputSymbol));
-  if($fp = opendir($SymbolDir))
-    {
-    while(($File = readdir($fp)) !== false)
-      {
-      if(preg_match("{(\d+)\.png}", $File, $Matches))
-	{
-	$FullFile = sprintf("%s/%s", $SymbolDir, $File);
-	$IconID = $Matches[1];
+	$SymbolDir = "symbols";
+	printf("<p>Choose an image for %s<br/>\n", htmlentities($OutputSymbol));
+	if($fp = opendir($SymbolDir)) {
+		while(($File = readdir($fp)) !== false) {
+			if(preg_match("{(\d+)\.png}", $File, $Matches)) {
+				$FullFile = sprintf("%s/%s", $SymbolDir, $File);
+				$IconID = $Matches[1];
 
-	printf("<span style='symbol'><a href='%s'><img src='%s' border=0 alt='icon $IconID' title='icon $IconID' /></a></span>\n", 
-	  LinkSelf(array(
-	    'show_icon_list'=>0, 
-	    'choose_marker_icon'=>0,
-	    $OutputSymbol=>$IconID)),
-	  $FullFile);
-	}
-      }
+				printf("<span style='symbol'><a href='%s'><img src='%s' border=0 alt='icon $IconID' title='icon $IconID' /></a></span>\n", 
+				LinkSelf(array(
+					'show_icon_list'=>0, 
+					'choose_marker_icon'=>0,
+					$OutputSymbol=>$IconID)),
+					$FullFile);
+			}
+		}
     
-    closedir($fp);
-    }
-  printf("</p>");
+		closedir($fp);
+	}
+
+	printf("</p>");
 }
 
 function iconName($IconID) {
