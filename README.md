@@ -3,6 +3,11 @@ StaticMapMaker
 
 A PNG map maker for OpenStreetMap and similar tile servers.
 
+Why
+===
+
+This program is useful for people who want to make static maps.  However, you can take screenshots from OpenStreetMap easily enough.  What this program lets you do is specify the precise size and location of your map, then add a few icons and lines, and then create the map image.  If you save the URL, you can update the map in the future by reloading the page.  Also, this program supports several different tile sources.  Each tile server renders the map in a different way, and it's easy to compare and choose your favorite using this.  Anyone can run this program, so even if one map making server goes down, you can easily recreate the map later on another server by changing the base part of the URL.
+
 
 Tile usage
 ==========
