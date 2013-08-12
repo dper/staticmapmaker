@@ -552,7 +552,7 @@ function T($EnglishText) {
 }
 
 function title() {
-	return("Create a map");
+	return("StaticMapMaker");
 }
 
 function footer() {
