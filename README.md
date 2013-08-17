@@ -1,7 +1,7 @@
 StaticMapMaker
 ==============
 
-A PNG map maker for OpenStreetMap and similar tile servers.
+A PNG map maker for [OpenStreetMap](http://www.openstreetmap.org) and similar tile servers.
 
 Why
 ===
