@@ -8,6 +8,25 @@ Why
 
 This program is useful for people who want to make static maps.  You can take screenshots from OpenStreetMap easily enough, and if that's all you need, don't bother with this.  What this program lets you do is specify the precise size and location of your map, then add a few icons and lines, and then create the map image.  If you save the URL, you can update the map in the future by reloading the page.  Also, this program supports several different tile sources.  Each tile server renders the map in a different way, and it's easy to compare and choose your favorite using this.  Anyone can run this program, so even if one map making server goes down, you can easily recreate the map later on another server by changing the base part of the URL.
 
+Installing on Debian
+====================
+
+Here are some installation instructions for Debian with Apache.  Something very similar should work for other Linux distributions.  First, get the source from GitHub.
+
+    $ git clone https://github.com/dper/StaticMapMaker
+    
+Put the code into a web-accessible location.  For example, `/var/www/`.
+
+    # mv StaticMapMaker /var/www/
+    
+Make the cache directory and ensure the web server has write privileges to it.  This is the only location where write permission is needed.
+
+    # cd /var/www/StaticMapMaker
+    # mkdir cache
+    # chown www-data:www-data cache
+
+If you have a publicly accessible machine, consider adding password protection.  Heavy tile usage could get you banned from the tile servers, so if you have a publicly accessible machine, consider using password protection.  In Apache, this can be done with an `htaccess` file or by modifying the `apache2.conf` file.
+
 Tile usage
 ==========
 
@@ -15,6 +34,8 @@ To make maps, this PHP program downloads map tiles from an external server.  The
 
 * OpenStreetMap: <http://wiki.openstreetmap.org/wiki/Tile_usage_policy>
 * OpenCycleMap: <http://thunderforest.com/terms/>
+
+Also, you may find that some of the layers are not useful to you.  Or you might find some new layers you'd like to add.  Layer information is in `layers.php.inc`, which can easily be modified according to the user's needs.
 
 History
 =======
