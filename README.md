@@ -11,19 +11,29 @@ This program is useful for people who want to make static maps.  You can take sc
 Installing on Debian
 ====================
 
+
 Here are some installation instructions for Debian with Apache.  Something very similar should work for other Linux distributions.  First, get the source from GitHub.
 
     $ git clone https://github.com/dper/StaticMapMaker
+
+Some PHP packages are required.  If you're not using Apache, you don't need the Apache-related ones.
+
+    # apt-get install php5 php5-gd libapache2-mod-php5
     
+Ensure that the module is installed.  It should be, if you installed it like above.
+
+    # a2enmod php5
+    This module is already enabled!
+
 Put the code into a web-accessible location.  For example, `/var/www/`.
 
     # mv StaticMapMaker /var/www/
-    
+
 Make the cache directory and ensure the web server has write privileges to it.  This is the only location where write permission is needed.
 
     # cd /var/www/StaticMapMaker
-    # mkdir cache
-    # chown www-data:www-data cache
+    # mkdir -p cache/tiles
+    # chown -R www-data:www-data cache
 
 If you have a publicly accessible machine, consider adding password protection.  Heavy tile usage could get you banned from the tile servers, so if you have a publicly accessible machine, consider using password protection.  In Apache, this can be done with an `htaccess` file or by modifying the `apache2.conf` file.
 
