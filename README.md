@@ -16,7 +16,7 @@ Here are some installation instructions for Debian with Apache.  Something very 
 
     $ git clone https://github.com/dper/StaticMapMaker
 
-Some PHP packages are required.  If you're not using Apache, you don't need the Apache-related ones.
+Some PHP packages are required.  If you're not using Apache, you don't need the Apache one.
 
     # apt-get install php5 php5-gd libapache2-mod-php5
     
