@@ -1,4 +1,1 @@
 All symbol images were downloaded from Wikimedia Commons or Clker.  Images have been numbered so that they can be accessed using a number in the API/URL.  They have also been resized and converted to PNG. 
-
-
-
