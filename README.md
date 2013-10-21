@@ -59,3 +59,14 @@ When asked about the license for StaticMap on Twitter, Ojw said the source code 
     Dear @almien, I've been playing around with #StaticMap recently. Very fun! Is it freely licensed? I looked at the source but dunno. #OSM
 
     @dpp0 you're welcome to treat http://svn.openstreetmap.org/sites/other/StaticMap/ … as BSD-licensed, I'll try to update those files at some point.
+
+Troubleshooting
+===============
+
+If you're having trouble on installation, you might have a situation where the site seems to load, and even the Creative Commons logo appears, but you don't see any maps.  Some likely scenarios and solutions are:
+
+* Your cache file is not writable by your web server.  Make sure that the user running your web server has write access to the cache.  For me on Debian, the user is `www-data`.
+* PHP is not working properly.  Try testing PHP with some other simple example scripts.  Once they work, then return to this.
+* You are missing some PHP dependencies.  The Debian dependencies are noted above.  However, if you use a different web server, or are running on a different operating system, the packages might not be the same.
+
+Whatever the problem, you should take a look at the web server's log file.  It probably has the information you need to figure out what's going wrong.  If you're getting stuck, don't hesitate to ask for help.
