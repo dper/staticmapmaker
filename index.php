@@ -65,10 +65,6 @@ $Fields = array(
       'default'=> 0,  
       'min'=> 0, 
       'max'=> 1),
-  "zoom_to_clicks"=>array(
-      'name'=>"Zoom to mouse position when recentering map", 
-      'type'=>'option', 
-      'options'=> array('off', 'on')),
   "att"=>array(
       'name'=>"Attribution", 
       'type'=>'option',  
@@ -216,9 +212,6 @@ if(preg_match("{\&\?(\d+),(\d+)$}", $_SERVER['QUERY_STRING'], $Matches))
       $Data = ReadFields($_REQUEST);
       list($_REQUEST['lat'], $_REQUEST['lon']) 
 	= imagemap_xy2ll($Matches[1], $Matches[2], $Data);
-
-      if($Data["zoom_to_clicks"] == 'on')
-	$_REQUEST['z'] = $Data['z'] + 2;
 
       break;
       }
@@ -470,7 +463,7 @@ switch($Data['mode'])
     {
     printf("<h2>API for accessing these maps</h2>\n");
     printf("<p>All aspects of this site are available through HTTP GET requests.  The fields are described below:</p>");
-    printf("<p>Some of these fields are for navigating the website, and would not typically be used when requesting an image (e.g. show_icon_list or zoom_to_clicks)</p>");
+    printf("<p>Some of these fields are for navigating the website, and would not typically be used when requesting an image (e.g. show_icon_list)</p>");
     printf("<p>Be sure to include show=1 to get the image instead of this website!</p>");
 
     printf("<p><a href='./?api=json'>Get this API as JSON</a></p>");
