@@ -63,15 +63,8 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
     } // End of base-map
 
   _imagefilter($Image, $Data['filter']);
-  
 
   imagealphablending($Image, true);
-
-  if($Data['rel'] > 0)
-    {
-    addLayer($Image, $Data, sprintf(
-      "http://dev.openstreetmap.org/~ojw/relation/relation.php?rel=%d&t=", $Data['rel']));
-    }
 
   addDrawings($Image, $Data);
   addIcons($Image, $Data);

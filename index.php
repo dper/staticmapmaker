@@ -59,12 +59,6 @@ $Fields = array(
 	  'Add icon', 
 	  'Draw', 
 	  'API')),
-  "rel"=>array(
-      'name'=>"Relation", 
-      'type'=>'numeric',  
-      'default'=> -1,  
-      'min'=> -1, 
-      'max'=> 1E10),
   "show_icon_list"=>array(
       'name'=>"Show choice of icons", 
       'type'=>'numeric', 
