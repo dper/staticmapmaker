@@ -59,12 +59,6 @@ $Fields = array(
 	  'Add icon', 
 	  'Draw', 
 	  'API')),
-  "gpx"=>array(
-      'name'=>"GPX trace", 
-      'type'=>'numeric',  
-      'default'=> -1,  
-      'min'=> -1, 
-      'max'=> 1E10),
   "rel"=>array(
       'name'=>"Relation", 
       'type'=>'numeric',  

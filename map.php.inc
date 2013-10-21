@@ -67,12 +67,6 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
 
   imagealphablending($Image, true);
 
-
-  if($Data['gpx'] > 0)
-    {
-    addLayer($Image, $Data, sprintf(
-      "http://dev.openstreetmap.org/~ojw/gpx/tile.php?gpx=%d&t=", $Data['gpx']));
-    }
   if($Data['rel'] > 0)
     {
     addLayer($Image, $Data, sprintf(
