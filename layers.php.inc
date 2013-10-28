@@ -59,7 +59,7 @@ function getLayers() {
 	if(1) {
 		foreach(array(1, 2, 5, 998, 999) as $CloudmadeStyleNum) {
 			$Layers[sprintf("Cloudmade %d", $CloudmadeStyleNum)] = Array(
-			"tiles" => sprintf("http://tile.cloudmade.com/8460df1eb000505e92f1e907e4b426e6/%d/256/", $CloudmadeStyleNum),
+			"tiles" => sprintf("http://tile.cloudmade.com/8460df1eb000505e92f1e907e4b426e6/%d/256", $CloudmadeStyleNum),
 			"description"=>sprintf("Style %d on Cloudmade's style-editor", $CloudmadeStyleNum),
 			"update"=>"",
 			"license"=>"CC-BY-SA 2.0",

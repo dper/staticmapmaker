@@ -263,11 +263,9 @@ function cacheableTile($X,$Y,$Z, $LayerData)
     $Y,
     $LayerData['format']);
 
-  if(!file_exists($LocalFilename)
-    || 0) // TODO: expire after a week
+  if(!file_exists($LocalFilename))
     {
     copy($RemoteFilename, $LocalFilename);
-    # TODO: chgrp and chmod($LocalFilename, ); // allow group to delete cache entries!
     }
   return($LocalFilename);
 }
