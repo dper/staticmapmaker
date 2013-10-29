@@ -62,16 +62,16 @@ function getLayers() {
 			"format"=>"jpeg",
 			"slippy"=>"http://open.mapquest.co.uk/"
 		),
-		"MapQuestSat" => Array(
-			"tiles" => "http://otile1.mqcdn.com/tiles/1.0.0/sat",
-			"description"=>"Remember to cite MapQuest when citing the image source. Zoom 1-11 only.",
-			"update"=>"",
-			"license"=>"CC-BY-SA 2.0",
-			"source"=>"OpenStreetMap",
-			"hosted"=>"MapQuest",
-			"format"=>"jpeg",
-			"slippy"=>"http://open.mapquest.co.uk/"
-		),
+#		"MapQuestSat" => Array(
+#			"tiles" => "http://otile1.mqcdn.com/tiles/1.0.0/sat",
+#			"description"=>"Remember to cite MapQuest when citing the image source. Zoom 1-11 only.",
+#			"update"=>"",
+#			"license"=>"CC-BY-SA 2.0",
+#			"source"=>"OpenStreetMap",
+#			"hosted"=>"MapQuest",
+#			"format"=>"jpeg",
+#			"slippy"=>"http://open.mapquest.co.uk/"
+#		),
 	);
 
 	# Optionally include Cloudmade tiles.
