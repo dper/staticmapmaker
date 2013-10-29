@@ -52,6 +52,16 @@ function getLayers() {
 			"format"=>"png",
 			"slippy"=>"http://www.opencyclemap.org/"
 		), 
+		"MapQuest" => Array(
+			"tiles" => "http://otile1.mqcdn.com/tiles/1.0.0/osm",
+			"description"=>"MapQuest.  Be sure to cite MapQuest when citing the image source.",
+			"update"=>"",
+			"license"=>"CC-BY-SA 2.0",
+			"source"=>"OpenStreetMap",
+			"hosted"=>"MapQuest",
+			"format"=>"jpeg",
+			"slippy"=>"http://open.mapquest.co.uk/"
+		),
 	);
 
 	# Optionally include Cloudmade tiles.

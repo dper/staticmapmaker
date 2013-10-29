@@ -81,9 +81,15 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
       imagecopy($Image, $Logo2, 20 + imagesx($Logo1), 10, 0, 0, imagesx($Logo2), imagesy($Logo2));
       break;
     }
-  
-  header("Content-Type: image/png");
-  imagepng($Image);
+ 
+  if($Format == "jpeg"){
+    header("Content-Type: image/jpeg");
+    imagejpeg($Image);
+  }
+  else{
+    header("Content-Type: image/png");
+    imagepng($Image);
+  }
 }
 
 function addLayer($Image, $Data, $Base)
