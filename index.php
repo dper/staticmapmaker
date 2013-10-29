@@ -5,6 +5,8 @@ include_once("map.php.inc");
 include_once("limits.php.inc");
 include_once("layers.php.inc");
 
+error_reporting (E_ALL ^ E_NOTICE);
+
 # Standard fields
 $Fields = array(
   "lat"=>array(
