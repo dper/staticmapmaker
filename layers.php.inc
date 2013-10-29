@@ -54,7 +54,7 @@ function getLayers() {
 		), 
 		"MapQuest" => Array(
 			"tiles" => "http://otile1.mqcdn.com/tiles/1.0.0/osm",
-			"description"=>"MapQuest.  Be sure to cite MapQuest when citing the image source.",
+			"description"=>"Remember to cite MapQuest when citing the image source.",
 			"update"=>"",
 			"license"=>"CC-BY-SA 2.0",
 			"source"=>"OpenStreetMap",
