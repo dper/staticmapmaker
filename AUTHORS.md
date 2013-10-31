@@ -1,11 +1,11 @@
 # StaticMap coders
 
-* Ojw &mdash; <http://wiki.openstreetmap.org/wiki/User:Ojw>
+* Ojw -- <http://wiki.openstreetmap.org/wiki/User:Ojw>
 * No doubt many other people contributed to the original **StaticMap**.
 
 # Code authors
 
-* dper &mdash; <https://dperkins.org>
+* dper -- <https://dperkins.org>
 
 # Bug reporters
 
