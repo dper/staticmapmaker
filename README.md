@@ -35,7 +35,7 @@ Make the cache directory and ensure the web server has write privileges to it.  
     # mkdir -p cache/tiles
     # chown -R www-data:www-data cache
 
-If you have a publicly accessible machine, consider adding password protection.  Heavy tile usage could get you banned from the tile servers, so if you have a publicly accessible machine, consider using password protection.  In Apache, this can be done with an `htaccess` file or by modifying the `apache2.conf` file.
+Heavy tile usage could get you banned from the tile servers.  If you have a publicly accessible machine, consider adding password protection to avoid this.  In Apache, you can restrict access in an `htaccess` file or by modifying the `apache2.conf` file.
 
 Tile usage
 ==========
