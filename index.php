@@ -54,7 +54,7 @@ $Fields = array(
 	  'Location', 
 	  'Resize', 
 	  'Style', 
-	  'Add icon', 
+	  'Icons', 
 	  'Draw', 
 	  'API')),
   "show_icon_list"=>array(
@@ -224,7 +224,7 @@ if(preg_match("{\&\?(\d+),(\d+)$}", $_SERVER['QUERY_STRING'], $Matches))
       $_REQUEST['dp_num'] = min($Data["dp_num"]+1, $MaxPoints);
       break;
       }
-    case 'Add icon':
+    case 'Icons':
       {
       $Data = ReadFields($_REQUEST);
       list($mlat, $mlon) = imagemap_xy2ll($Matches[1], $Matches[2], $Data);
@@ -363,7 +363,7 @@ switch($Data['mode'])
 
     break;
     }
-  case 'Add icon':
+  case 'Icons':
     {
     if($Data['show_icon_list'])
       {
