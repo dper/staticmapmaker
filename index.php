@@ -18,7 +18,7 @@ $Fields = array(
 	"layer"=>array('name'=>"Base map", 'type'=>'option', 'options'=>array_keys(getLayers())),
 	"filter"=>array('name'=>"Filter for base-image", 'type'=>'option', 'options'=>array('none','grey','lightgrey','darkgrey','invert','bright','dark','verydark')),
 	"mode"=>array('name'=>"Edit mode", 'type'=>'tab', 'options'=>array('Location', 'Resize', 'Style', 'Icons', 'Draw', 'API')),
-	"gpx"=>array('name'=>"GPX trace",'type'=>'numeric', 'default'=> -1, 'min'=> -1, 'max'=> 1E10),
+//	"trace"=>array('name'=>"GPX trace",'type'=>'text', 'default'=> ''),
 	"show_icon_list"=>array('name'=>"Show choice of icons", 'type'=>'numeric', 'default'=> 0, 'min'=> 0, 'max'=> 1),
 	"att"=>array('name'=>"Attribution", 'type'=>'option', 'options'=>array('logo', 'text', 'none'))
 );
@@ -50,7 +50,6 @@ for($i = 0; $i < $MaxIcons; $i++) {
 }
 
 $Fields["choose_marker_icon"] = array('name'=>"Which marker's icon to modify", 'type'=>'numeric', 'default'=> 0, 'min'=> 0, 'max'=> $MaxIcons);
-
 
 //----------------------------------------------------------------------------
 // Generate the fields used to specify and edit lines and polygons
@@ -84,7 +83,6 @@ if(0 && $_GET["clear_cache"] == "yes") {
 	exit;
 }
 
-
 # if mlat/mlon but not lat/lon supplied, then use those for map centre
 if((array_key_exists('mlat', $_REQUEST) && array_key_exists('mlon', $_REQUEST)) && !(array_key_exists('lat', $_REQUEST) && array_key_exists('lon', $_REQUEST))) {
 	$_REQUEST['lat'] = $_REQUEST['mlat'];
@@ -97,7 +95,6 @@ foreach(array("zoom"=>"z", "mlat" => "mlat0", "mlon" => "mlon0") as $k => $v) {
 		$_REQUEST[$v] = $_REQUEST[$k];
 	}
 }
-
 
 # if zoom supplied but not lat/lon, kill it!!!
 if(array_key_exists('z', $_REQUEST) && !(array_key_exists('lat', $_REQUEST) && array_key_exists('lon', $_REQUEST))) {
@@ -143,29 +140,26 @@ if(preg_match("{\&\?(\d+),(\d+)$}", $_SERVER['QUERY_STRING'], $Matches)) {
 	}
 }
 
-
 $Data = ReadFields($_REQUEST);
-
 
 if($_REQUEST['show']) {
 	doMap($Data['lat'], $Data['lon'], $Data['z'], $Data['w'], $Data['h'], $Data['layer'], 'jpg', true, $Data);
 	exit;
 }
 
-
 printf("<html><head><title>%s</title>\n", T(title()));
 printf("<link rel='stylesheet' href='style.css' />");
 printf("</head>\n");
-
 printf("<p style='float:right'><a href='./'>Restart</a></p>");
 printf("<h1>%s</h1>\n", T(title()));
-
 printf("<div>\n");
 printf("<div class='tabs'>\n");
+
 foreach($Fields['mode']['options'] as $Mode) {
 	printf(" <a href='%s' class='tab%s'>%s</a>\n", 
 	LinkSelf(array('mode' => $Mode)), $Mode == $Data['mode'] ? '_selected' : '', $Mode);
 }
+
 print "</div>\n\n<div class='main'>\n\n";
 
 switch($Data['mode']) {
@@ -244,9 +238,7 @@ switch($Data['mode']) {
 			for($i = 0; $i < $MaxIcons; $i++) {
 				if(markerInUse($i)) {
 					// TODO: image-align no longer in HTML spec?
-					$Icon = sprintf("<a href='%s'><img src='%s' align='middle' border='0' title='Click to change icon'/></a>",
-					LinkSelf(array("choose_marker_icon" => $i, 'show_icon_list'=>1)),
-				iconName($Data["mico$i"]));
+					$Icon = sprintf("<a href='%s'><img src='%s' align='middle' border='0' title='Click to change icon'/></a>", LinkSelf(array("choose_marker_icon" => $i, 'show_icon_list'=>1)), iconName($Data["mico$i"]));
 
 				printf("<p>%s marker %d: Location (%1.5f, %1.5f)  <a href='%s'>delete</a></p>\n", $Icon, $i, $Data["mlat$i"], $Data["mlon$i"], LinkSelf(array("mlat$i" => 0, "mlon$i" => 0)));
 				$Count++;
@@ -424,6 +416,9 @@ function ReadFields($Req) {
 			if(!preg_match("/^[0-9A-F]{3}$/", $Value))
 				$Value = FieldDefault($Field);
 		break;
+//		case "text":
+//			#TODO Add a test?
+//		break;
 		default:
 			printf("<p>Unrecognised field type %s (default-deny means you need to specify what values are valid!)</p>", htmlentities($Details['type']));
 			$Value = 0;
@@ -444,7 +439,7 @@ function FieldDefault($Field) {
 	case "option":
 		return($Fields[$Field]['options'][0]);
 	case "color":
-		return("00F"); // what's a good default-default colour?
+		return("00F");
 	}
 	return(0);
 }
