@@ -45,7 +45,7 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
 	    $Part = '';
 	    if(substr($Filename,-3) == "png")
 	      $Part = imagecreatefrompng($Filename);
-	    elseif(substr($Filename,-4) == "jpeg")
+	    elseif(substr($Filename,-4) == "jpeg" or substr($Filename,-3) == "jpg")
 	      $Part = imagecreatefromjpeg($Filename);
 	    
 	    if($Part)
@@ -82,7 +82,7 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
       break;
     }
  
-  if($Format == "jpeg"){
+  if($Format == "jpeg" or $Format == "jpg"){
     header("Content-Type: image/jpeg");
     imagejpeg($Image);
   }
