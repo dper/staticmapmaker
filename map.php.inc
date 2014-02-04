@@ -65,6 +65,11 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
   _imagefilter($Image, $Data['filter']);
 
   imagealphablending($Image, true);
+  
+  if($Data['gpx'] > 0)
+    {
+    addLayer($Image, $Data, sprintf("tile.php?gpx=%d&t=", $Data['gpx']));
+    }
 
   addDrawings($Image, $Data);
   addIcons($Image, $Data);
