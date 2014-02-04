@@ -18,7 +18,6 @@ $Fields = array(
 	"layer"=>array('name'=>"Base map", 'type'=>'option', 'options'=>array_keys(getLayers())),
 	"filter"=>array('name'=>"Filter for base-image", 'type'=>'option', 'options'=>array('none','grey','lightgrey','darkgrey','invert','bright','dark','verydark')),
 	"mode"=>array('name'=>"Edit mode", 'type'=>'tab', 'options'=>array('Location', 'Resize', 'Style', 'Icons', 'Draw', 'API')),
-//	"trace"=>array('name'=>"GPX trace",'type'=>'text', 'default'=> ''),
 	"show_icon_list"=>array('name'=>"Show choice of icons", 'type'=>'numeric', 'default'=> 0, 'min'=> 0, 'max'=> 1),
 	"att"=>array('name'=>"Attribution", 'type'=>'option', 'options'=>array('logo', 'text', 'none'))
 );

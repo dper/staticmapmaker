@@ -51,13 +51,6 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
 	_imagefilter($Image, $Data['filter']);
 	imagealphablending($Image, true);
 
-// TODO This depends on tile.php, written elsewhere.
-// See http://wiki.openstreetmap.org/wiki/GPX_slippy_map
-//
-//	if(isset($Data['trace'])) {
-//		addLayer($Image, $Data, sprintf("tile.php?gpx=%d&t=", $Data['trace']));
-//	}
-
 	addDrawings($Image, $Data);
 	addIcons($Image, $Data);
 
