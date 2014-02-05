@@ -19,7 +19,6 @@ $Fields = array(
 	"filter"=>array('name'=>"Filter for base-image", 'type'=>'option', 'options'=>array('none','grey','lightgrey','darkgrey','invert','bright','dark','verydark')),
 	"mode"=>array('name'=>"Edit mode", 'type'=>'tab', 'options'=>array('Location', 'Resize', 'Style', 'Icons', 'Draw', 'API')),
 	"show_icon_list"=>array('name'=>"Show choice of icons", 'type'=>'numeric', 'default'=> 0, 'min'=> 0, 'max'=> 1),
-	"att"=>array('name'=>"Attribution", 'type'=>'option', 'options'=>array('logo', 'text', 'none'))
 );
 
 
@@ -214,7 +213,7 @@ switch($Data['mode']) {
 		foreach(getLayers() as $Layer => $LayerData) {
 			printf("<tr%s>", $Layer == $Data['layer'] ? " id='selected_style'":"");
 			printf("<td><h2>%s</h2></td>", $Layer);
-			printf("<td><a href='%s'><img src='%s' width='%d' height='%d'/></a></td>\n", LinkSelf(array('layer'=>$Layer)),	LinkSelf(array('w'=>$SampleSize, 'h'=>$SampleSize, 'layer'=>$Layer, 'att'=>'none')). "show=1", $SampleSize,	$SampleSize);
+			printf("<td><a href='%s'><img src='%s' width='%d' height='%d'/></a></td>\n", LinkSelf(array('layer'=>$Layer)),	LinkSelf(array('w'=>$SampleSize, 'h'=>$SampleSize, 'layer'=>$Layer)). "show=1", $SampleSize,	$SampleSize);
 			printf("<td>");
 			foreach($LayerData as $FieldName => $FieldValue) {
 				printf("%s: %s<br/>", $FieldName, htmlentities($FieldValue));

@@ -54,17 +54,12 @@ function doMap($Lat, $Long, $Zoom, $Width, $Height, $Layer, $Format, $AddAttribu
 	addDrawings($Image, $Data);
 	addIcons($Image, $Data);
 
-	switch($Data['att']) {
-	case 'text':
-		addText($Image, $Width, $Height, attribution($Layer));
-		break;
-	case 'logo':
-		$Logo1 = imagecreatefrompng('gfx/osm_small.png');
-		$Logo2 = imagecreatefrompng('gfx/cc_by_sa.png');
-		imagecopy($Image, $Logo1, 10, 10, 0, 0, imagesx($Logo1), imagesy($Logo1));
-		imagecopy($Image, $Logo2, 20 + imagesx($Logo1), 10, 0, 0, imagesx($Logo2), imagesy($Logo2));
-		break;
-	}
+	$Logo1 = imagecreatefrompng('gfx/osm_small.png');
+	imagecopy($Image, $Logo1, 10, 10, 0, 0, imagesx($Logo1), imagesy($Logo1));
+
+	// This inaccurately assumes every tile set is CC-BY-SA.
+	//$Logo2 = imagecreatefrompng('gfx/cc_by_sa.png');
+	//imagecopy($Image, $Logo2, 20 + imagesx($Logo1), 10, 0, 0, imagesx($Logo2), imagesy($Logo2));
  
 	if($Format == "jpeg" or $Format == "jpg") {
 		header("Content-Type: image/jpeg");
@@ -158,7 +153,6 @@ function addIcons($Image, $Data) {
 
 			if($Icon = imagecreatefrompng(sprintf("symbols/%d.png", $Data["mico$i"])))	{
 				$ImgBg = imagecolorallocate($Image, 255, 255, 200);
-				# $Icon = imagerotate($Icon, 30, $ImgBg);
 				$sx = imagesx($Icon);
 				$sy = imagesy($Icon);
 				imagecopy($Image, $Icon, $mx - 0.5 * $sx, $my - 0.5 * $sy, 0, 0, $sx, $sy);
@@ -243,75 +237,75 @@ function tileURL($X,$Y,$Z, $LayerData) {
 
 // Sample code from http://uk2.php.net/manual/en/function.imageline.php
 function imagelinethick($image, $x1, $y1, $x2, $y2, $color, $thick = 1) {
-    /* this way it works well only for orthogonal lines
-    imagesetthickness($image, $thick);
-    return imageline($image, $x1, $y1, $x2, $y2, $color);
-    */
     if ($thick == 1) {
         return imageline($image, $x1, $y1, $x2, $y2, $color);
     }
     $t = $thick / 2 - 0.5;
+
     if ($x1 == $x2 || $y1 == $y2) {
         return imagefilledrectangle($image, round(min($x1, $x2) - $t), round(min($y1, $y2) - $t), round(max($x1, $x2) + $t), round(max($y1, $y2) + $t), $color);
     }
+
     $k = ($y2 - $y1) / ($x2 - $x1); //y = kx + q
     $a = $t / sqrt(1 + pow($k, 2));
+
     $points = array(
         round($x1 - (1+$k)*$a), round($y1 + (1-$k)*$a),
         round($x1 - (1-$k)*$a), round($y1 - (1+$k)*$a),
         round($x2 + (1+$k)*$a), round($y2 - (1-$k)*$a),
         round($x2 + (1-$k)*$a), round($y2 + (1+$k)*$a),
     );
+
     imagefilledpolygon($image, $points, 4, $color);
     return imagepolygon($image, $points, 4, $color);
 }
 
 function _imagefilter($Image, $Mode) {
-  if($Mode == "none" or $Mode == "normal" or $Mode == "")
-    return;
+	if($Mode == "none" or $Mode == "normal" or $Mode == "")
+		return;
 
-  $w = imagesx($Image);
-  $h = imagesy($Image);
-  for($x = 0; $x < $w; $x++)
-    {
-    for($y = 0; $y < $w; $y++)
-      {
-      list($R,$G,$B) = int2rgb(imagecolorat($Image, $x, $y));
-      switch($Mode)
-	{
-	case "grey":
-	  $R = $G = $B = ($R + $G + $B) / 3.0;
-	  break;
-	case "lightgrey":
-	  $R = $G = $B = 0.75 + 0.25 * ($R + $G + $B) / 3.0;
-	  break;
-	case "darkgrey":
-	  $R = $G = $B = 0.25 * ($R + $G + $B) / 3.0;
-	  break;
-	case "bright":
-	  $R = pow($R, 0.5);
-	  $G = pow($G, 0.5);
-	  $B = pow($B, 0.5);
-	  break;
-	case "dark":
-	  $R *= 0.25;
-	  $G *= 0.25;
-	  $B *= 0.25;
-	  break;
-	case "verydark":
-	  $R = 0.25 * pow($R, 0.5);
-	  $G = 0.25 * pow($G, 0.5);
-	  $B = 0.25 * pow($B, 0.5);
-	  break;
-	case "invert":
-	  $R = 1.0 - $R;
-	  $G = 1.0 - $G;
-	  $B = 1.0 - $B;
-	  break;
-	}
-      imagesetpixel($Image, $x, $y, imagecolorallocate($Image, $R*255,$G*255,$B*255));
+	$w = imagesx($Image);
+	$h = imagesy($Image);
+
+	for($x = 0; $x < $w; $x++) {
+		for($y = 0; $y < $w; $y++) {
+			list($R,$G,$B) = int2rgb(imagecolorat($Image, $x, $y));
+			
+			switch($Mode) {
+			case "grey":
+				$R = $G = $B = ($R + $G + $B) / 3.0;
+			break;
+			case "lightgrey":
+				$R = $G = $B = 0.75 + 0.25 * ($R + $G + $B) / 3.0;
+			break;
+			case "darkgrey":
+				$R = $G = $B = 0.25 * ($R + $G + $B) / 3.0;
+			break;
+			case "bright":
+				$R = pow($R, 0.5);
+				$G = pow($G, 0.5);
+				$B = pow($B, 0.5);
+			break;
+			case "dark":
+				$R *= 0.25;
+				$G *= 0.25;
+				$B *= 0.25;
+			break;
+			case "verydark":
+				$R = 0.25 * pow($R, 0.5);
+				$G = 0.25 * pow($G, 0.5);
+				$B = 0.25 * pow($B, 0.5);
+			break;
+			case "invert":
+				$R = 1.0 - $R;
+				$G = 1.0 - $G;
+				$B = 1.0 - $B;
+			break;
+			}
+		
+		imagesetpixel($Image, $x, $y, imagecolorallocate($Image, $R*255,$G*255,$B*255));
       }
-    }
+	}
 }
 
 function int2rgb($Int) {
@@ -321,9 +315,6 @@ function int2rgb($Int) {
 	return(array($R / 255.0, $G / 255.0,$B / 255.0));
 }
 
-#-----------------------------------------------------------------------------
-# Slippy map coordinate functions: should probably use a library
-#-----------------------------------------------------------------------------
 function XY($Lat, $Long, $Zoom) {
 	$PortionY = Lat2Y($Lat);
 	$PortionX = Long2X($Long);
@@ -336,12 +327,14 @@ function XY($Lat, $Long, $Zoom) {
 function Long2X($Long) {
 	return(($Long + 180) / 360);
 }
+
 function Lat2Y($Lat) {
 	$LimitY = 3.14159265358979;
 	$Y = ProjectF($Lat);
 	$PY = ($LimitY - $Y) / (2 * $LimitY);
 	return($PY);
 }
+
 function ProjectF($Lat) {
 	$Lat = deg2rad($Lat);
 	$Y = log(tan($Lat) + (1/cos($Lat)));
