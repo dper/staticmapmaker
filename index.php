@@ -355,9 +355,8 @@ function title() {
 }
 
 function footer() {
-	$OsmLicense = "http://creativecommons.org/licenses/by-sa/2.0/";
-	$URL = "openstreetmap.org";
-	return("<p class='footer'>Map data <a href='$OsmLicense'>CC-BY-SA 2.0</a>. Main site: <a href=http://'$URL'>$URL</a>.</p>");
+	$URL = "http://www.openstreetmap.org/copyright";
+	return("<p class='footer'>Map data &copy; OpenStreetMap contributors. <a href=\"$URL\">$URL</a>.</p>");
 }
 
 function LinkSelf($Changes = array(), $Base = "./") {
