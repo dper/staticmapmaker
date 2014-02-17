@@ -1,4 +1,4 @@
-StaticMapMaker
+staticmapmaker
 ==============
 
 A PNG map maker for [OpenStreetMap](http://www.openstreetmap.org) and similar tile servers.
@@ -14,7 +14,7 @@ Installing on Debian
 
 Here are some installation instructions for Debian with Apache.  Something very similar should work for other Linux distributions.  First, get the source from GitHub.
 
-    $ git clone https://github.com/dper/StaticMapMaker
+    $ git clone https://github.com/dper/staticmapmaker
 
 Some PHP packages are required.  If you're not using Apache, you don't need the Apache one.
 
@@ -27,11 +27,11 @@ Ensure that the module is installed.  It should be, if you installed it like abo
 
 Put the code into a web-accessible location.  For example, `/var/www/`.
 
-    # mv StaticMapMaker /var/www/
+    # mv staticmapmaker /var/www/
 
 Make the cache directory and ensure the web server has write privileges to it.  This is the only location where write permission is needed.
 
-    # cd /var/www/StaticMapMaker
+    # cd /var/www/staticmapmaker
     # mkdir -p cache/tiles
     # chown -R www-data:www-data cache
 
